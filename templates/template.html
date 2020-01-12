@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>{{article_headline}}</title>
+	<meta name="viewport" content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1"/>
+    <link rel="stylesheet" href="css/main.css">	
+</head>
+<body>
+
+<h1>{{article_headline|safe}}</h1>
+
+{% if article_category %}
+<p><strong>Category: </strong> {{article_category}} </p>
+{% endif %}
+
+{% if reporter_byline %}
+<p><strong>By: </strong>{{reporter_byline}}</p> 
+{% endif %}
+
+<p><strong>Published: </strong> {{article_date}} </p> 
+
+
+{% if image_name %}
+<img src="image/{{ image_name }}">
+<p>{{ photographer_byline }}</p>
+{% endif %}
+
+{% set article_text_list = article_text %}
+{% for p in article_text_list %}
+{{ p }}
+{% endfor %}
+
+<h3>Tags</h3>
+{% set tags = article_tags_list %}
+{% for t in tags %}
+<p>{{ t }}</p>
+{% endfor %}
+
+</body>
+<!-- Template made by Ryan Serpico -->
+</html>
